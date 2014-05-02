@@ -6,14 +6,15 @@ import (
 )
 
 func Cbrt(x complex128) complex128 {
-	z := (1 + 0i)
-	for i := 0; i < 10; i++ {
-		z = z - (cmplx.Pow(z, 3)-x)/(3*cmplx.Pow(z, 2))
-	}
-	return z
+    z := 1.0
+    x_r := real(x)
+    for i := 0; i < 1000; i++ {
+        z = z - ((z * z * z) - x_r)/(3 * (z * z))
+    }
+    return complex(z, imag(x))
 }
 
 func main() {
 	fmt.Println(Cbrt(2 + 3i))
-	fmt.Println(cmplx.Pow(4, 3))
+	fmt.Println(cmplx.Pow(2, 0.333333))
 }
