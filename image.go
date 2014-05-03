@@ -11,11 +11,11 @@ type Image struct {
 }
 
 func (i Image) At(x, y int) color.Color {
-	return color.RGBA{uint8(x + y*x), uint8(x + y*y), 255, 255}
+	return color.RGBA{uint8(x*y), uint8(x*y), 255, 255}
 }
 
 func (i Image) Bounds() image.Rectangle {
-	return image.Rect(0, 0, i.w-1, i.h-1)
+	return image.Rect(0, 0, i.w, i.h)
 }
 
 func (i Image) ColorModel() color.Model {
